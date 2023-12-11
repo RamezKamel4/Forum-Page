@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ProgZone - Main</title>
+    <link rel="stylesheet" href = "css/discussions.css">
+    <script type="text/javascript" src="js/animations.js" defer></script>
+</head>
+<body>
+
+    <header>
+        <h1 class="logo"><a class="logo2" href="main.html">ProgZone</a></h1>
+        <div id="profileButton" onclick="toggleCategory('guides')">
+            <a href="profile.html">
+                <img src="img/test1.jpg" alt="Profile Picture">
+            </a>
+        </div>
+        <nav class="top">
+            <ul class="categories">
+                <li><a class="discussions" href="discussions.html" onclick="toggleCategory('discussions')">Discussions</a></li>
+                <li><a class="questions" href="questions.html" onclick="toggleCategory('questions')">Questions</a></li>
+                <li><a class="guides" href="guides.html" onclick="toggleCategory('guides')">Guides</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="line"></div>
+
+    <div> <h1 style="color: white;">Some Discussions</h1></div>
+
+    <div class="editor-container" id="formattingWindow" style="display: none;">
+        <div class="editor-toolbar">
+            <button onclick="execCommand('bold')">Bold</button>
+            <button onclick="execCommand('italic')">Italic</button>
+            <button onclick="execCommand('underline')">Underline</button>
+            <button onclick="execCommand('insertOrderedList')">Numbered List</button>
+            <button onclick="execCommand('insertUnorderedList')">Bullet Points</button>
+            <button onclick="execCommand('justifyLeft')">Align Left</button>
+            <button onclick="execCommand('justifyCenter')">Align Center</button>
+            <button onclick="execCommand('justifyRight')">Align Right</button>
+            
+
+            <div style="background-color: #fff; display: inline-block; padding: 5px;">
+                <label for="font-size">Font Size:</label>
+                <select id="font-size" onchange="execCommand('fontSize', false, this.value)">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                </select>
+            </div>
+            
+         
+            <div style="background-color: #fff; display: inline-block; padding: 5px;">
+                <label for="font-color">Font Color:</label>
+                <input type="color" id="font-color" onchange="execCommand('foreColor', false, this.value)">
+            </div>
+        </div>
+        
+        <div class="editor-content" contenteditable="true" id="editor" style="border: 2px solid #fff; padding: 10px; color: #fff;"></div>
+        <button onclick="closeFormattingWindow()">Close</button>
+    </div>
+
+    <footer>
+        <p>&copy; 2023 ProgZone. All rights reserved.</p>
+    </footer>
+
+    <div class="floating-button" onclick="openFormattingWindow()">+</div>
+    <script>
+        function openFormattingWindow() {
+            document.getElementById('formattingWindow').style.display = 'block';
+        }
+
+        function closeFormattingWindow() {
+            document.getElementById('formattingWindow').style.display = 'none';
+        }
+
+        function execCommand(command, showUI = false, value = null) {
+            document.execCommand(command, showUI, value);
+        }
+    </script>
+
+</body>
+</html>
